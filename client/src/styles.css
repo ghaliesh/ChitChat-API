@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+:root {
+  --primary: #02173E;
+  --secondary: #BF0C2B;
+  --light: #fff;
+  --info: #09A38C;
+  --primary_hover: #3e3e7e;
+  --secondary_hover: #cc304a;
+  --dark: #222;
+}

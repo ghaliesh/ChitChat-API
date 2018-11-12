@@ -1,0 +1,92 @@
+<div #app class="app">
+  <header>
+    <div class="clickable app-logo">CHITCHAT</div>
+    <div class="btns" id="buttons">
+      <i
+        *ngIf="!(isAuth$ | async)"
+        (click)="openModel($event)"
+        class="fas
+      fa-sign-in-alt clickable"
+        ><span>Sign up</span>
+      </i>
+      <i
+        *ngIf="(isAuth$ | async) && (curresntUser$ | async)"
+        class="clickable
+              fas fa-user-circle"
+      >
+        <span>{{ (curresntUser$ | async).name }} </span>
+      </i>
+      <i
+        *ngIf="(isAuth$ | async)"
+        (click)="logout()"
+        class="clickable fas fa-sign-out-alt"
+        ><span>log out</span>
+      </i>
+    </div>
+  </header>
+
+  <main class="message-container" #chatBox>
+    <div *ngFor="let item of messages">
+      <div
+        [ngClass]="{
+          ' right-bubble-container':
+            (curresntUser$ | async)?.email == item?.user.email
+        }"
+      >
+        <div
+          class="bubble shadow"
+          [ngClass]="{
+            'right-bubble': (curresntUser$ | async)?.email == item?.user.email
+          }"
+        >
+          <div
+            class="msg-header"
+            [ngClass]="{
+              'right-bubble-header':
+                (curresntUser$ | async)?.email == item?.user.email
+            }"
+          >
+            {{ item.user.name }}
+          </div>
+          <div class="b-msg">{{ item.message }}</div>
+          <div class="b-time">{{ item.date }}</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="input-container">
+      <input
+        (keydown)="send($event)"
+        type="text"
+        name="msg"
+        placeholder="Your message here"
+      />
+      <button (onclick)="send($event)">SEND</button>
+    </div>
+  </footer>
+</div>
+
+<div #model class="model-wrapper">
+  <div #modelContent class="model">
+    <form (ngSubmit)="register()" [formGroup]="formGroup" class="form">
+      <div class="from-element">
+        <label class="label">Enter your name</label>
+        <input formControlName="name" class="input-field" />
+      </div>
+      <div class="from-element">
+        <label class="label">Enter your Email</label>
+        <input formControlName="email" class="input-field" />
+      </div>
+      <div class="from-element">
+        <label class="label">Enter your Password</label>
+        <input formControlName="password" class="input-field" />
+      </div>
+      <button type="submit" class="submit btn">Submit</button>
+      <button class="close btn" type="button" (click)="closeModel($event)">
+        Close
+      </button>
+    </form>
+  </div>
+</div>
