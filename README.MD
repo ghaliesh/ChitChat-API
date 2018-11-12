@@ -26,7 +26,11 @@ then
 dotnet watch run
 ```
 
+
+
 AND
+
+
 
 ```
 cd client
@@ -40,7 +44,7 @@ ng serve
 
 ## Built With
 
-- [AspNetCore](https://nodejs.org) - Backed
+- [AspNetCore](https://nodejs.org) - Backend
 - [SignalR](https://github.com/aspnet/SignalR) - Sockets
 - [Angular](https://angular.io/) - Frontend
 - [Entity Framework](https://github.com/aspnet/EntityFrameworkCore) - ORM
