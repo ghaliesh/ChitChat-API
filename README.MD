@@ -10,13 +10,17 @@ npm run install-server
 
 AND
 
-`npm run install-client`
+```
+npm run install-client
+```
 
 ## Running the app :
 
 ```
 cd API
 ```
+
+then
 
 ```
 dotnet watch run
